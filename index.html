@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>index</title>
+  
+    
+    
+
+
+<script>
+
+function isOldBrowser() {
+  const userAgent = navigator.userAgent;
+  const isOldIE = /MSIE \d/.test(userAgent);
+  const isOldFirefox = /firefox\/(2\.|3\.6)/i.test(userAgent);
+
+  
+  const isOldWindows = /Windows NT 5\./i.test(userAgent);
+  
+  
+
+  return isOldIE  || isOldFirefox   || isOldWindows  ;
+}
+
+
+
+
+if(isOldBrowser()) {
+window.location.href = "src/index.html";
+} 
+else{
+window.location.href = "src/index.html";
+} 
+
+</script>
+
+</head>
+<body>
+  <h1>Cargando página...</h1>
+</body>
+</html>
