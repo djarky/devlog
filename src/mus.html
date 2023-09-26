@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"  />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>hash</title>
+
+<!-- Incluye Prism.js y el tema que desees -->
+<link href="prism.css" rel="stylesheet" />
+<script src="prism.js"></script>
+
+
+<script>
+  Prism.highlightAll();
+</script>
+
+
+<p>Progrando música como un animal, específicamente como un ratón&nbsp;</p>
+<p>el Gameboy tiene 4 canales de audio que se controla con bytes de registro, osea se manejan escribiendo valores en registros mapeados en memoria (cómo no), y cada canal cuenta con varios registros para cada uno de sus parámetros, software como gbt player automáticamente setean estos canales desde un archivo mod que es fácil de editar , pero como quería hacer música full dinámica use directamente los registros a lo bestia.&nbsp;</p>
+<p>Aquí hay una explicación más detallada como funciona los registros de sonido :<a href="https://wiki.ladecadence.net/doku.php?id=tutorial_de_ensamblador#hola_sonido">https://wiki.ladecadence.net/doku.php?id=tutorial_de_ensamblador#hola_sonido</a></p>
+<p>Con eso hice esta simple librería :</p>
+<p><br></p>
+<pre>
+<code class="language-c">
+void play_sound_C1(UBYTE R1,UBYTE R2,UBYTE R3,UBYTE R4,UBYTE R5){
+NR50_REG=0xFF;
+NR51_REG=0xFF;
+NR52_REG=0xFF;
+NR10_REG=R1;
+NR11_REG=R2;
+NR12_REG=R3;
+NR13_REG=R4;
+NR14_REG=R5;
+}
+void play_sound_C2(UBYTE R1,UBYTE R2,UBYTE R3,UBYTE R4){
+NR50_REG=0xFF;
+NR51_REG=0xFF;
+NR52_REG=0xFF;
+NR21_REG=R1;
+NR22_REG=R2;
+NR23_REG=R3;
+NR24_REG=R4;
+}
+void play_sound_C4(UBYTE R1,UBYTE R2,UBYTE R3,UBYTE R4){
+NR50_REG=0xFF;
+NR51_REG=0xFF;
+NR52_REG=0xFF;
+NR41_REG=R1;
+NR42_REG=R2;
+NR43_REG=R3;
+NR44_REG=R4;
+}
+</code>
+</pre>
+<p>Ahora con programas cono <a href="games/gbsound/gbsound.html">gbsound.gb</a>, si es&nbsp;una rom de Gameboy con la cual puedes toquetear directamente los registros y ver que sonido produce (ideal para hacer efectos de sonido) lo que hice fue que tome como base un par de sonidos que me gustó y en base a eso cambie un par de valores por la posición de las ratóncitas, y el resultado si estuvo interesante si subían el tono subía, si bajaban el tono bajaba. Pero quería aún más.&nbsp;</p>
+<p>así fue entonces que usando el valor proporcionado por sys_time construí un switch case de 32 casos para así conformar una melodía, luego hice que dependiendo de que si hay ratones muertos, tomando su indice reproduzcan o no ciertas notas, genial ya tenía una melodia dinámica que va cambiando conforme matas ratones.&nbsp;</p>
+<p>Este es el código :</p>
+<p><br></p>
+<pre>
+<code class="language-c">
+void play_mice_melody_normal(){
+k= ((sys_time &gt;&gt; 3) %32);
+switch(k){
+case 1:
+if(npc_dir[0]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[0] ,0x84);play_sound_C4(0x30,0x8F,0x70,0xC0);
+}
+break;
+case 2:play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[0] ,0xC4);
+break;
+case 3:
+break;
+case 4:
+if(npc_dir[0]!=DEAD_WAY){
+play_sound_C2( 0x73, 0xD7, npc_pos_y_abs[0] ,0xC5);
+}
+break;
+case 5:
+break;
+case 6:
+break;
+case 7:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 8:
+if(npc_dir[1]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[1] ,0xC4);
+}
+break;
+case 9:
+break;
+case 10:
+if(npc_dir[0]==DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[1] ,0xC4);
+}
+break;
+case 11:
+break;
+case 12:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 13:
+if(npc_dir[2]==DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[2] ,0x84);
+}
+break;
+case 14:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 15:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 16:
+if(npc_dir[1]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[1] ,0xC3);
+}
+break;
+case 17:
+break;
+case 18:play_sound_C2( 0x73, 0xD7, npc_pos_y_abs[0] ,0xC5);
+break;
+case 19:
+break;
+case 20:
+if(npc_dir[3]==DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+}
+break;
+case 21:
+break;
+case 22:
+if(npc_dir[2]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[2] ,0x84);
+}
+break;
+case 23:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 24:play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+break;
+case 25:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 26:
+if(npc_dir[2]!=DEAD_WAY){
+play_sound_C2( 0x73, 0xD7, npc_pos_y_abs[2] ,0xC5);
+}
+break;
+case 27:
+break;
+case 28:
+break;
+case 29:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 30:play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[2] ,0x84);
+break;
+case 31:
+if(npc_dir[3]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+}
+break;
+case 32:
+if(npc_dir[3]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+}
+break;
+}
+}
+</code>
+</pre>
+<p>entonces también se me ocurrió que como en el juego keychan puede girar y cambiar la gravedad, que también la música se invierta cuando este de cabeza, para esto solo tenía que cambiar los índices del switch al revés (32,31,30..2,1),todo ok no? Pero también necesitaba&nbsp; entonces no solo reproducir la música al revez sino también a los lados, pues piénsalo por un momento como seria reproducir música de costado, si se que no tiene el mínimo sentido pero de eso trata.&nbsp;</p>
+<p>Así que lo que se me ocurrió entonces fue usar índices intercalados es decir (1,32,3,30,...) y luego invertirlos, toda una locura!!&nbsp;</p>
+<p>Luego como el tempo&nbsp; tendía a variar, lo que hice fue hacer que siempre en todos los switch el case 1 sea&nbsp;</p>
+<pre>
+<code class="language-c">
+play_sound_C4(0x30,0x8F,0x70,0xC0)
+</code>
+</pre>
+<p>además de cambiar algunas notas en compases especiales como el 4, 8 y 16 y con esto conseguí que el tempo se marque de igual manera en las melodias rotadas.&nbsp;</p>
+<p><br></p>
+<p>A lo que me refiero&nbsp;</p>
+<p><br></p>
+<pre>
+
+<code class="language-c">
+void play_mice_melody_side_L(){
+k= ((sys_time &gt;&gt; 3) %32);
+switch(k){
+case 1:play_sound_C4(0x30,0x8F,0x70,0xC0);
+if(npc_dir[0]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[0] ,0x84);
+}
+break;
+case 32:play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[0] ,0x84);
+break;
+case 3:
+break;
+case 30:
+if(npc_dir[0]!=DEAD_WAY){
+play_sound_C2( 0x73, 0xD7, npc_pos_y_abs[0] ,0xC5);
+}
+break;
+case 5:
+break;
+case 28:
+break;
+case 7:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 26:
+if(npc_dir[1]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[1] ,0x84);
+}
+break;
+case 9:
+break;
+case 24:
+if(npc_dir[0]==DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[1] ,0x84);
+}
+break;
+case 11:
+break;
+case 22:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 13:
+if(npc_dir[2]==DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[2] ,0x84);
+}
+break;
+case 20:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 15:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 18:
+if(npc_dir[1]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[1] ,0xC3);
+}
+break;
+case 17:
+break;
+case 16:play_sound_C2( 0x73, 0xD7, npc_pos_y_abs[0] ,0xC5);
+break;
+case 19:
+break;
+case 14:
+if(npc_dir[3]==DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+}
+break;
+case 21:
+break;
+case 12:
+if(npc_dir[2]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[2] ,0x84);
+}
+break;
+case 23:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 10:play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+break;
+case 25:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 8:
+if(npc_dir[2]!=DEAD_WAY){
+play_sound_C2( 0x73, 0xD7, npc_pos_y_abs[2] ,0x84);
+}
+break;
+case 27:
+break;
+case 6:
+break;
+case 29:play_sound_C4(0x3B,0x51,0xB8,0xC0);
+break;
+case 4:play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[2] ,0x84);
+break;
+case 31:
+if(npc_dir[3]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+}
+break;
+case 2:
+if(npc_dir[3]!=DEAD_WAY){
+play_sound_C2( 0x36, 0xA1, npc_pos_x_abs[3] ,0x84);
+}
+break;
+}
+}
+</code>
+</pre>
