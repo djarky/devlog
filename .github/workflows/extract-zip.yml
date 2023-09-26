@@ -1,0 +1,51 @@
+
+name: Extract src.zip
+
+on:
+  push:
+    paths:
+      - 'src.zip'
+
+jobs:
+  extract-src-zip:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Create src directory
+      run: mkdir -p src
+      working-directory: ${{ github.workspace }}
+
+    - name: List files in workspace
+      run: ls -R
+      working-directory: ${{ github.workspace }}
+
+    - name: Extract src.zip
+      run: unzip ${{ github.workspace }}/src.zip -d ${{ github.workspace }}/src
+      working-directory: ${{ github.workspace }}
+
+    - name: List files in src directory
+      run: ls -R src
+      working-directory: ${{ github.workspace }}
+
+    - name: Configure Git
+      run: |
+        git config --global user.email "aivr_95@hotmail.com"
+        git config --global user.name "djarky"
+      working-directory: ${{ github.workspace }}
+
+    - name: Commit and Push Changes
+      run: |
+        git add .
+        git commit -m "Update extracted src.zip"
+        git push
+      working-directory: ${{ github.workspace }}
+
+      
