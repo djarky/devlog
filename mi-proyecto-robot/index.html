@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Técnico: Brazo Robótico 6 DOF & Gemelo Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navegación Lateral / Menú -->
+    <aside class="sidebar">
+        <div class="brand">
+            <h2>ROBOT ARM 6-DOF</h2>
+            <p>Digital Twin & Control Multimodal</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#resumen">Resumen</a></li>
+                <li><a href="#objetivos">Objetivos</a></li>
+                <li><a href="#justificacion">Justificación</a></li>
+                <li><a href="#desarrollo">Desarrollo</a></li>
+                <li><a href="#innovacion">Innovación</a></li>
+                <li><a href="#impacto">Impacto</a></li>
+                <li><a href="#conclusiones">Conclusiones</a></li>
+                <li><a href="#anexos">Anexos</a></li>
+                <li><a href="#bibliografia">Bibliografía</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="content">
+
+        <!-- Encabezado -->
+        <header class="hero">
+            <span class="badge">Open Source Project</span>
+            <h1>Sistema de Control Integral para Brazo Robótico de 6 DOF</h1>
+            <p class="subtitle">Gemelo Digital en Ursina Engine, Visión Artificial (MediaPipe) y Arquitectura Multimodal con PySide6</p>
+        </header>
+
+        <!-- Resumen -->
+        <section id="resumen" class="card">
+            <h2>Resumen del Proyecto</h2>
+            <p>El presente proyecto detalla el diseño, desarrollo e implementación de un sistema robótico integral de 6 grados de libertad (6 DOF), caracterizado por una arquitectura de control multimodal y un entorno de simulación tridimensional. A diferencia de los controladores robóticos convencionales, este sistema propone un ecosistema híbrido que fusiona el hardware físico con un Gemelo Digital desarrollado en Ursina Engine, permitiendo la sincronización bidireccional mediante protocolos de comunicación de baja latencia (UDP Sockets).</p>
+            <p>La unidad central de control, desarrollada en Python (PySide6), permite la gestión del brazo de manera clara e intuitiva. El desarrollo se apoya en una metodología de Investigación y Desarrollo (R&D) que optimiza algoritmos de filtrado de señal, cinemática inversa y automatización de procesos. Se distribuye bajo una licencia de código abierto.</p>
+        </section>
+
+        <!-- Objetivos -->
+        <section id="objetivos" class="card">
+            <h2>1. Objetivos</h2>
+            <div class="grid-2">
+                <div class="box">
+                    <h3>Objetivo General</h3>
+                    <p>Diseñar e implementar un sistema integral de control para un brazo robótico de 6 grados de libertad (6 DOF), que permita la manipulación precisa mediante una interfaz gráfica avanzada el cual sea ituitivo y facil de usar y  simulación digital en tiempo real y control biométrico basado en visión artificial por camara.</p>
+                </div>
+                <div class="box">
+                    <h3>Objetivos Específicos</h3>
+                    <ul>
+                        <li>Desarrollar una interfaz de usuario (GUI) multiplataforma utilizando PySide6.</li>
+                        <li>Implementar un motor de simulación 3D con Ursina Engine como gemelo digital.</li>
+                        <li>Establecer un protocolo de comunicación serial eficiente entre el software y el microcontrolador.</li>
+                        <li>Crear un sistema de persistencia y galería de poses con un timeline de animación.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Justificación -->
+        <section id="justificacion" class="card">
+            <h2>2. Justificación del Proyecto</h2>
+            <p>se ofrece una herramienta educativa y técnica que permite previsualizar los movimientos DEL ROBOT antes de ejecutarlos en el hardware real, minimizando riesgos de colisión y facilitando la programación de tareas complejas mediante una línea de tiempo interactiva.
+El proyecto ha sido concebido bajo la filosofía de Código Abierto (Open Source), permitiendo que la comunidad técnica pueda estudiar, modificar y mejorar el sistema..</p>
+            <p>Desarrollado bajo la filosofía de Código Abierto (Open Source), la arquitectura se basa en un modelo de Licenciamiento Híbrido Permisivo (PySide6 LGPL v3, Ursina MIT, MediaPipe Apache 2.0)</p>
+        </section>
+
+
+
+
+
+            <h3 class="mt-4">Pilares de Innovación del Ecosistema</h3>
+            <ul>
+                <li><strong>Fusión de Interfaces:</strong> Integración fluida de visión por computador (MediaPipe), simulación en tiempo real (Ursina) y control físico en un solo entorno unificado.</li>
+                <li><strong>Arquitectura Gemelo Digital (Digital Twin):</strong> Sincronización bidireccional y previsualización de trayectorias en un modelo 3D antes de ejecutarlas en el robot real.</li>
+                <li><strong>Modo de Precisión CNC:</strong> Capacidad de alternar dinámicamente entre un control gestual humano y un sistema numérico de trayectoria matemática.</li>
+                <li><strong>Robótica Blanda Híbrida ("Brazo Amigurumi"):</strong> La incorporación de fibra textil tejida como amortiguación intrínseca y chasis liviano.</li>
+            </ul>
+        </section>
+
+        <!-- Desarrollo -->
+        <section id="desarrollo" class="card">
+            <h2>3. Desarrollo o Cuerpo del Proyecto</h2>
+
+            <h3>3.1 Metodología de Desarrollo</h3>
+            <p>El proceso de R&D se fundamentó en Ingeniería Asistida por IA, Programación Agéntica y "Vibe Coding" La IA actuó como coprogramador y arquitecto de software, permitiendo enfocarse en la lógica del sistema y la integración de hardware más que en la codificación manual de bajo nive </p>
+
+            <h3>3.2 Componentes del Sistema</h3>
+            <p>El hardware está basado en el modelo "Fabri Creator" de 6 DOF con modificaciones</p>
+            
+            <div class="grid-3">
+                <div class="media-card">
+                    <img src="img/MG995.png" alt="Servomotor MG995">
+                    <span>Imagen N°7: Actuadores (Servomotores MG995)</span>
+                </div>
+                <div class="media-card">
+                    <img src="img/modelo3d_blender.png" alt="Modelo 3D en Blender">
+                    <span>Imagen N°14: Modelo 3D (Blender)</span>
+                </div>
+                <div class="media-card">
+                    <img src="img/tinkercad_diagram.png" alt="Diagrama de Conexión Tinkercad">
+                    <span>Imagen N°10: Diagrama de Conexión Básica</span>
+                </div>
+            </div>
+
+            <h3 class="mt-4">Firmware</h3>
+            <div class="grid-2">
+                <div>
+                    <p>El microcontrolador actúa como nodo esclavo interpretando comandos seriales a 115200 baudios[cite: 1]. Mapea los ángulos recibidos (0° - 180°) y posiciona los servomotores mediante <code>Servo.h</code></p>
+                    <div class="media-card">
+                        <img src="img/arduino_hardware.jpg" alt="Placa Arduino">
+                        <span>Arduino UNO y módulos</span>
+                    </div>
+                </div>
+                <div>
+                    <h4>Código Arduino (Resumido)</h4>
+                    <pre><code>#include &lt;Servo.h&gt;
+Servo s1, s2, s3, s4, s5, s6, grip;
+
+void setup() {
+  Serial.begin(115200);
+  s1.attach(7); s2.attach(8); s3.attach(9);
+  s4.attach(10); s5.attach(11); s6.attach(12);
+  grip.attach(6);
+}
+
+void loop() {
+  if (Serial.available()) {
+    String data = Serial.readStringUntil('\n');
+    // Procesamiento de comandos y mapeo de ángulos
+  }
+}</code></pre>
+                </div>
+            </div>
+
+            <h3 class="mt-4">Software e Interfaz Gráfica (GUI)</h3>
+            <p>La interfaz en Python (PySide6) incluye diales, visualización en tiempo real, manipulación de objetos virtuales en Ursina Engine y comunicación por Sockets UDP de baja latencia[cite: 1].</p>
+            
+            <div class="grid-2">
+                <div class="media-card">
+                    <img src="img/gui_interface.png" alt="Interfaz GUI de Control">
+                    <span>Imagen N°11: Interfaz Grafica de Control GUI[cite: 1]</span>
+                </div>
+                <div class="media-card">
+                    <img src="img/diagram_flow.png" alt="Diagrama de Funcionamiento">
+                    <span>Imagen N°12: Diagrama de Funcionamiento Interfaz-Arduino[cite: 1]</span>
+                </div>
+            </div>
+
+            <h3 class="mt-4">Fabricación No Convencional: "Brazo Amigurumi"</h3>
+            <p>Dada la indisponibilidad de impresión 3D, se optó por el tejido técnico mediante la técnica de Amigurumi (Crochet), alineándose con los principios de <strong>Soft Robotics</strong>[cite: 1]. Permite absorción de vibraciones, reducción de costos y resiliencia mecánica[cite: 1].</p>
+        </section>
+
+        <!-- Innovación -->
+        <section id="innovacion" class="card">
+            <h2>5. Innovación</h2>
+            <div class="grid-2">
+                <div class="box">
+                    <h3>Simbiosis Hombre-IA y Programación Agéntica</h3>
+                    <p>
+                        El uso de metodologías agénticas para la programación y el desarrollo permitió romper los límites del conocimiento técnico inicial, logrando un sistema complejo que, de otro modo, habría requerido de un equipo multidisciplinario compuesto por varios programadores y diseñadores.
+                    </p>
+                </div>
+
+                <div class="box">
+                    <h3>Manufactura Textil Sustentable</h3>
+                    <p>
+                        El método de usar fabricación artesanal por medio de textiles demuestra ser ecoamigable y sostenible, dado que no utiliza plásticos de un solo uso o filamentos derivados del petróleo que dañan el medio ambiente, superando las limitaciones tradicionales de la impresión 3D.
+                    </p>
+                </div>
+            </div>
+
+        <!-- Impacto -->
+        <section id="impacto" class="card">
+            <h2>6. Impacto Productivo, Social o Educativo</h2>
+            <div class="grid-3">
+                <div class="box">
+                    <h3>Educativo</h3>
+                    <p>Plataforma STEM integral para el aprendizaje de cinemática, visión artificial y desarrollo HMI[cite: 1].</p>
+                </div>
+                <div class="box">
+                    <h3>Productivo</h3>
+                    <p>Teleoperación segura, prototipado de bajo costo y automatización CNC ligera[cite: 1].</p>
+                </div>
+                <div class="box">
+                    <h3>Social & Ambiental</h3>
+                    <p>Democratización tecnológica, asistencia biométrica y reducción de huella de carbono mediante textiles[cite: 1].</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusiones -->
+        <section id="conclusiones" class="card">
+            <h2>7. Conclusiones</h2>
+            <ul>
+                <li>Se validó el desarrollo asistido por IA (Programación Agéntica) para alcanzar sistemas a un nivel profesional</li>
+                <li>La implementación del Gemelo Digital redujo los riesgos de colisión y desgaste mecánico</li>
+                <li>Se demostró que la rigidez absoluta no es indispensable para prototipos de robótica educativa mediante la estructura tejida</li>
+            </ul>
+        </section>
+
+        <!-- Anexos -->
+        <section id="anexos" class="card">
+            <h2>8. Anexos</h2>
+            <h3>Pinout y Montaje</h3>
+            <div class="grid-3">
+                <div class="media-card">
+                    <img src="img/arduino_pinout.png" alt="Arduino Pinout">
+                    <span>Imagen N°16: Pinout Arduino UNO[cite: 1]</span>
+                </div>
+                <div class="media-card">
+                    <img src="img/base_nema.png" alt="Modificación Base">
+                    <span>Imagen N°18: Modificación Modelo 3D[cite: 1]</span>
+                </div>
+                <div class="media-card">
+                    <img src="img/tejido_amigurumi.jpg" alt="Tejido Amigurumi">
+                    <span>Imagen N°19: Montaje Tejido Amigurumi[cite: 1]</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bibliografía -->
+        <section id="bibliografia" class="card">
+            <h2>9. Bibliografía</h2>
+            <ul class="biblio-list">
+                <li>djarky. (2025). <em>Controlador principal para brazo robótico 6-DOF</em>. GitHub: <a href="https://github.com/djarky/robot-arm" target="_blank">github.com/djarky/robot-arm</a>[cite: 1]</li>
+                <li>Google. (s.f.). <em>MediaPipe Solutions Guide</em>. <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker" target="_blank">ai.google.dev</a>[cite: 1]</li>
+                <li>The Ursina Team. (s.f.). <em>Ursina Engine Documentation</em>. <a href="https://www.ursinaengine.org/" target="_blank">ursinaengine.org</a>[cite: 1]</li>
+                <li>Qt Group. (2025). <em>PySide6 Reference Documentation</em>. <a href="https://doc.qt.io/qtforpython-6/" target="_blank">doc.qt.io</a>[cite: 1]</li>
+                <li>Rus, D., & Tolley, M. T. (2015). <em>Design, fabrication and control of soft robots</em>. Nature[cite: 1].</li>
+            </ul>
+        </section>
+
+    </main>
+
+</body>
+</html>

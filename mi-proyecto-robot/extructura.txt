@@ -1,0 +1,13 @@
+mi-proyecto-robot/
+├── index.html
+├── styles.css
+└── img/
+    ├── mg995.jpg
+    ├── modelo3d_blender.png
+    ├── tinkercad_diagram.png
+    ├── arduino_hardware.jpg
+    ├── gui_interface.png
+    ├── diagram_flow.png
+    ├── arduino_pinout.png
+    ├── base_nema.png
+    └── tejido_amigurumi.jpg
