@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe Técnico: Brazo Robótico 6 DOF & Gemelo Digital</title>
+    <title>Informe Técnico: Brazo Robótico</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,8 @@
     <!-- Navegación Lateral / Menú -->
     <aside class="sidebar">
         <div class="brand">
-            <h2>ROBOT ARM 6-DOF</h2>
-            <p>Digital Twin & Control Multimodal</p>
+            <h2>ROBOT ARM</h2>
+            <p>Wire & wool</p>
         </div>
         <nav>
             <ul>
@@ -35,19 +35,32 @@
     <!-- Contenido Principal -->
     <main class="content">
 
+        <img src="img/splash.png" alt="Wire & Wool" style="width: 100%;object-fit: cover;display: block;border-bottom: 2px solid #ffe3ec;">
+
         <!-- Encabezado -->
         <header class="hero">
-            <span class="badge">Open Source Project</span>
-            <h1>Sistema de Control Integral para Brazo Robótico de 6 DOF</h1>
+            <span class="badge">Open Source Project</span><span class="badge">Python 3.10+</span><span class="badge">Linux</span><span class="badge">Windows</span>
+            <h1>Sistema de Control Integral para Brazo Robótico</h1>
             <p class="subtitle">Gemelo Digital en Ursina Engine, Visión Artificial (MediaPipe) y Arquitectura Multimodal con PySide6</p>
         </header>
+
+
 
         <!-- Resumen -->
         <section id="resumen" class="card">
             <h2>Resumen del Proyecto</h2>
             <p>El presente proyecto detalla el diseño, desarrollo e implementación de un sistema robótico integral de 6 grados de libertad (6 DOF), caracterizado por una arquitectura de control multimodal y un entorno de simulación tridimensional. A diferencia de los controladores robóticos convencionales, este sistema propone un ecosistema híbrido que fusiona el hardware físico con un Gemelo Digital desarrollado en Ursina Engine, permitiendo la sincronización bidireccional mediante protocolos de comunicación de baja latencia (UDP Sockets).</p>
-            <p>La unidad central de control, desarrollada en Python (PySide6), permite la gestión del brazo de manera clara e intuitiva. El desarrollo se apoya en una metodología de Investigación y Desarrollo (R&D) que optimiza algoritmos de filtrado de señal, cinemática inversa y automatización de procesos. Se distribuye bajo una licencia de código abierto.</p>
+            <p>La unidad central de control, desarrollada en Python (PySide6), permite la gestión del brazo de manera clara e intuitiva. El desarrollo se apoya en una metodología de Investigación y Desarrollo (R&D) apoyado de herramientas de integigencia Artificial.
+            El proyecto se distribuye bajo una licencia de código abierto (MIT) lo cual significa que cualquiera puede desgargar y modificar el proyecto segun sus requerimietos de manera completamente libre.</p>
+            <div class="box">
+                <h3>Descargar software</h3>
+                <li><a href="https://github.com/djarky/robot-arm/releases/download/v1.0.1/UrsinaArmSimulator-windows-x86_64.zip">Windows 10/11 (64bit)</a></li>
+                <li><a href="https://github.com/djarky/robot-arm/releases/download/v1.0.1/UrsinaArmSimulator-linux-x86_64.zip">Linux (64 bits)</a></li>
+                <li><a href="https://github.com/djarky/robot-arm">codigo fuente</a></li>
+            </div>
         </section>
+
+        <img src="img/screenshot.png" alt="UI" style="width: 100%;object-fit: cover;display: block;border-bottom: 2px solid #ffe3ec;">
 
         <!-- Objetivos -->
         <section id="objetivos" class="card">
@@ -55,7 +68,7 @@
             <div class="grid-2">
                 <div class="box">
                     <h3>Objetivo General</h3>
-                    <p>Diseñar e implementar un sistema integral de control para un brazo robótico de 6 grados de libertad (6 DOF), que permita la manipulación precisa mediante una interfaz gráfica avanzada el cual sea ituitivo y facil de usar y  simulación digital en tiempo real y control biométrico basado en visión artificial por camara.</p>
+                    <p>Diseñar e implementar un sistema integral de control para un brazo robótico de 6 grados de libertad (6 DOF), que permita la manipulación precisa mediante una interfaz gráfica avanzada el cual sea ituitivo y facil de usar y  simulación digital en tiempo real y control por medio de Joypads ademas de la posivilidad de usar un control biométrico basado en visión artificial por camara.</p>
                 </div>
                 <div class="box">
                     <h3>Objetivos Específicos</h3>
@@ -73,29 +86,18 @@
         <section id="justificacion" class="card">
             <h2>2. Justificación del Proyecto</h2>
             <p>se ofrece una herramienta educativa y técnica que permite previsualizar los movimientos DEL ROBOT antes de ejecutarlos en el hardware real, minimizando riesgos de colisión y facilitando la programación de tareas complejas mediante una línea de tiempo interactiva.
-El proyecto ha sido concebido bajo la filosofía de Código Abierto (Open Source), permitiendo que la comunidad técnica pueda estudiar, modificar y mejorar el sistema..</p>
-            <p>Desarrollado bajo la filosofía de Código Abierto (Open Source), la arquitectura se basa en un modelo de Licenciamiento Híbrido Permisivo (PySide6 LGPL v3, Ursina MIT, MediaPipe Apache 2.0)</p>
+El proyecto ha sido concebido bajo la filosofía de Código Abierto (Open Source), permitiendo que la comunidad técnica pueda estudiar, modificar y mejorar el sistema.</p>
+            <p>Desarrollado bajo la filosofía de Código Abierto (Open Source), la arquitectura se basa en un modelo de Licenciamiento Híbrido Permisivo (PySide6 LGPL v3, Ursina MIT, MediaPipe Apache 2.0) garantiza su libre distribucion</p>
         </section>
 
 
-
-
-
-            <h3 class="mt-4">Pilares de Innovación del Ecosistema</h3>
-            <ul>
-                <li><strong>Fusión de Interfaces:</strong> Integración fluida de visión por computador (MediaPipe), simulación en tiempo real (Ursina) y control físico en un solo entorno unificado.</li>
-                <li><strong>Arquitectura Gemelo Digital (Digital Twin):</strong> Sincronización bidireccional y previsualización de trayectorias en un modelo 3D antes de ejecutarlas en el robot real.</li>
-                <li><strong>Modo de Precisión CNC:</strong> Capacidad de alternar dinámicamente entre un control gestual humano y un sistema numérico de trayectoria matemática.</li>
-                <li><strong>Robótica Blanda Híbrida ("Brazo Amigurumi"):</strong> La incorporación de fibra textil tejida como amortiguación intrínseca y chasis liviano.</li>
-            </ul>
-        </section>
 
         <!-- Desarrollo -->
         <section id="desarrollo" class="card">
             <h2>3. Desarrollo o Cuerpo del Proyecto</h2>
 
             <h3>3.1 Metodología de Desarrollo</h3>
-            <p>El proceso de R&D se fundamentó en Ingeniería Asistida por IA, Programación Agéntica y "Vibe Coding" La IA actuó como coprogramador y arquitecto de software, permitiendo enfocarse en la lógica del sistema y la integración de hardware más que en la codificación manual de bajo nive </p>
+            <p>El proceso de R&D se fundamentó en Ingeniería Asistida por IA, Programación Agéntica y "Vibe Coding" La IA actuó como coprogramador y arquitecto de software, permitiendo enfocarse en la lógica del sistema y la integración de hardware más que en la codificación manual de bajo nivel </p>
 
             <h3>3.2 Componentes del Sistema</h3>
             <p>El hardware está basado en el modelo "Fabri Creator" de 6 DOF con modificaciones</p>
@@ -118,7 +120,7 @@ El proyecto ha sido concebido bajo la filosofía de Código Abierto (Open Source
             <h3 class="mt-4">Firmware</h3>
             <div class="grid-2">
                 <div>
-                    <p>El microcontrolador actúa como nodo esclavo interpretando comandos seriales a 115200 baudios[cite: 1]. Mapea los ángulos recibidos (0° - 180°) y posiciona los servomotores mediante <code>Servo.h</code></p>
+                    <p>El microcontrolador actúa como nodo esclavo interpretando comandos seriales a 115200 baudios. Mapea los ángulos recibidos (0° - 180°) y posiciona los servomotores mediante <code>Servo.h</code></p>
                     <div class="media-card">
                         <img src="img/arduino_hardware.jpg" alt="Placa Arduino">
                         <span>Arduino UNO y módulos</span>
@@ -160,7 +162,7 @@ void loop() {
             </div>
 
             <h3 class="mt-4">Fabricación No Convencional: "Brazo Amigurumi"</h3>
-            <p>Dada la indisponibilidad de impresión 3D, se optó por el tejido técnico mediante la técnica de Amigurumi (Crochet), alineándose con los principios de <strong>Soft Robotics</strong>[cite: 1]. Permite absorción de vibraciones, reducción de costos y resiliencia mecánica[cite: 1].</p>
+            <p>Dada la indisponibilidad de impresión 3D, se optó por el tejido técnico mediante la técnica de Amigurumi (Crochet), alineándose con los principios de <strong>Soft Robotics</strong>[cite: 1].donde la flexibilidad del material permite una mayor tolerancia a impactos y una interacción más segura con humanos</p>
         </section>
 
         <!-- Innovación -->
@@ -177,7 +179,7 @@ void loop() {
                 <div class="box">
                     <h3>Manufactura Textil Sustentable</h3>
                     <p>
-                        El método de usar fabricación artesanal por medio de textiles demuestra ser ecoamigable y sostenible, dado que no utiliza plásticos de un solo uso o filamentos derivados del petróleo que dañan el medio ambiente, superando las limitaciones tradicionales de la impresión 3D.
+                        El método de usar fabricación artesanal por medio de textiles demuestra ser ecoamigable y sostenible, dado que no utiliza plásticos de un solo uso o filamentos derivados del petróleo que dañan el medio ambiente, superando las limitaciones tradicionales de la impresión 3D y perimitiendo la reducción de costos .
                     </p>
                 </div>
             </div>
@@ -188,11 +190,11 @@ void loop() {
             <div class="grid-3">
                 <div class="box">
                     <h3>Educativo</h3>
-                    <p>Plataforma STEM integral para el aprendizaje de cinemática, visión artificial y desarrollo HMI[cite: 1].</p>
+                    <p>Plataforma STEM integral para el aprendizaje de cinemática, visión artificial y desarrollo HMI</p>
                 </div>
                 <div class="box">
                     <h3>Productivo</h3>
-                    <p>Teleoperación segura, prototipado de bajo costo y automatización CNC ligera[cite: 1].</p>
+                    <p>Teleoperación segura, prototipado de bajo costo y automatización CNC </p>
                 </div>
                 <div class="box">
                     <h3>Social & Ambiental</h3>
@@ -218,15 +220,23 @@ void loop() {
             <div class="grid-3">
                 <div class="media-card">
                     <img src="img/arduino_pinout.png" alt="Arduino Pinout">
-                    <span>Imagen N°16: Pinout Arduino UNO[cite: 1]</span>
+                    <span>Imagen N°16: Pinout Arduino UNO</span>
                 </div>
                 <div class="media-card">
                     <img src="img/base_nema.png" alt="Modificación Base">
-                    <span>Imagen N°18: Modificación Modelo 3D[cite: 1]</span>
+                    <span>Imagen N°18: Modificación al Modelo 3D orgininal</span>
                 </div>
                 <div class="media-card">
                     <img src="img/tejido_amigurumi.jpg" alt="Tejido Amigurumi">
-                    <span>Imagen N°19: Montaje Tejido Amigurumi[cite: 1]</span>
+                    <span>Imagen N°19: Montaje Tejido Amigurumi</span>
+                </div>
+                <div class="media-card">
+                    <img src="img/amigurumi2.png" alt="Montaje Amigurumi">
+                    <span>Imagen N°20: Montaje Tejido Amigurumi</span>
+                </div>
+                <div class="media-card">
+                    <img src="img/montaje.jpg" alt="montaje en la feria">
+                    <span>Imagen N°21: Montaje final en la feria institucional</span>
                 </div>
             </div>
         </section>
