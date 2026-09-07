@@ -39,7 +39,7 @@
 
         <!-- Encabezado -->
         <header class="hero">
-            <span class="badge">Open Source Project</span><span class="badge">Python 3.10+</span><span class="badge">Linux</span><span class="badge">Windows</span>
+            <span class="badge">Open Source Project</span><span class="badge">Python 3.10+</span><span class="badge">Windows</span><span class="badge">Linux</span>
             <h1>Sistema de Control Integral para Brazo Robótico</h1>
             <p class="subtitle">Gemelo Digital en Ursina Engine, Visión Artificial (MediaPipe) y Arquitectura Multimodal con PySide6</p>
         </header>
@@ -133,36 +133,54 @@ Servo s1, s2, s3, s4, s5, s6, grip;
 
 void setup() {
   Serial.begin(115200);
-  s1.attach(7); s2.attach(8); s3.attach(9);
-  s4.attach(10); s5.attach(11); s6.attach(12);
-  grip.attach(6);
-}
+  s1.attach(7); s2.attach(8); s3.attach(9);s4.attach(10); s5.attach(11); s6.attach(12);grip.attach(6);
+  
+  // Posición inicial
+  s1.write(90);s2.write(90);s3.write(90);s4.write(90);s5.write(90);s6.write(90);grip.write(0);
 
+  delay(500);
+}
 void loop() {
-  if (Serial.available()) {
+    if (Serial.available()) {
     String data = Serial.readStringUntil('\n');
-    // Procesamiento de comandos y mapeo de ángulos
+    int v[7];
+    separar_valores_por_coma(v,data);
+     // verificar que el arduino tenga el programa correcto
+    if (data == "?") {
+      Serial.println("ID:ARM_ROBOT");//retorna identificador del robot
+      return;
+    }
+
+    // Control de ejes
+    if (idx >= 6) {
+      s1.write(fixAngle(0, constrain(v[0], 0, 180)));s2.write(fixAngle(1, constrain(v[1], 0, 180))); s3.write(fixAngle(2, constrain(v[2], 0, 180)));s4.write(fixAngle(3, constrain(v[3], 0, 180))); s5.write(fixAngle(4, constrain(v[4], 0, 180)));s6.write(fixAngle(5, constrain(v[5], 0, 180)));
+
+      Serial.println("ACK");//comando valido
+
+    } else {
+      Serial.println("ERROR");
+    }
   }
 }</code></pre>
                 </div>
             </div>
 
             <h3 class="mt-4">Software e Interfaz Gráfica (GUI)</h3>
-            <p>La interfaz en Python (PySide6) incluye diales, visualización en tiempo real, manipulación de objetos virtuales en Ursina Engine y comunicación por Sockets UDP de baja latencia[cite: 1].</p>
+            <p>La interfaz en Python (PySide6) incluye diales, visualización en tiempo real, manipulación de objetos virtuales en Ursina Engine y comunicación por Sockets UDP de baja latencia .</p>
             
             <div class="grid-2">
                 <div class="media-card">
                     <img src="img/gui_interface.png" alt="Interfaz GUI de Control">
-                    <span>Imagen N°11: Interfaz Grafica de Control GUI[cite: 1]</span>
+                    <span>Imagen N°11: Interfaz Grafica de Control GUI </span>
                 </div>
                 <div class="media-card">
                     <img src="img/diagram_flow.png" alt="Diagrama de Funcionamiento">
-                    <span>Imagen N°12: Diagrama de Funcionamiento Interfaz-Arduino[cite: 1]</span>
+                    <span>Imagen N°12: Diagrama de Funcionamiento Interfaz-Arduino </span>
                 </div>
             </div>
 
             <h3 class="mt-4">Fabricación No Convencional: "Brazo Amigurumi"</h3>
-            <p>Dada la indisponibilidad de impresión 3D, se optó por el tejido técnico mediante la técnica de Amigurumi (Crochet), alineándose con los principios de <strong>Soft Robotics</strong>[cite: 1].donde la flexibilidad del material permite una mayor tolerancia a impactos y una interacción más segura con humanos</p>
+            <p>Dada la indisponibilidad de impresión 3D, se optó por el tejido técnico mediante la técnica de Amigurumi (Crochet), alineándose con los principios de <strong>Soft Robotics</strong> .donde la flexibilidad del material permite una mayor tolerancia a impactos y una interacción más segura con humanos</p>
         </section>
 
         <!-- Innovación -->
@@ -198,7 +216,7 @@ void loop() {
                 </div>
                 <div class="box">
                     <h3>Social & Ambiental</h3>
-                    <p>Democratización tecnológica, asistencia biométrica y reducción de huella de carbono mediante textiles[cite: 1].</p>
+                    <p>Democratización tecnológica, asistencia biométrica y reducción de huella de carbono mediante textiles .</p>
                 </div>
             </div>
         </section>
@@ -245,11 +263,11 @@ void loop() {
         <section id="bibliografia" class="card">
             <h2>9. Bibliografía</h2>
             <ul class="biblio-list">
-                <li>djarky. (2025). <em>Controlador principal para brazo robótico 6-DOF</em>. GitHub: <a href="https://github.com/djarky/robot-arm" target="_blank">github.com/djarky/robot-arm</a>[cite: 1]</li>
-                <li>Google. (s.f.). <em>MediaPipe Solutions Guide</em>. <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker" target="_blank">ai.google.dev</a>[cite: 1]</li>
-                <li>The Ursina Team. (s.f.). <em>Ursina Engine Documentation</em>. <a href="https://www.ursinaengine.org/" target="_blank">ursinaengine.org</a>[cite: 1]</li>
-                <li>Qt Group. (2025). <em>PySide6 Reference Documentation</em>. <a href="https://doc.qt.io/qtforpython-6/" target="_blank">doc.qt.io</a>[cite: 1]</li>
-                <li>Rus, D., & Tolley, M. T. (2015). <em>Design, fabrication and control of soft robots</em>. Nature[cite: 1].</li>
+                <li>djarky. (2025). <em>Controlador principal para brazo robótico 6-DOF</em>. GitHub: <a href="https://github.com/djarky/robot-arm" target="_blank">github.com/djarky/robot-arm</a> </li>
+                <li>Google. (s.f.). <em>MediaPipe Solutions Guide</em>. <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker" target="_blank">ai.google.dev</a> </li>
+                <li>The Ursina Team. (s.f.). <em>Ursina Engine Documentation</em>. <a href="https://www.ursinaengine.org/" target="_blank">ursinaengine.org</a> </li>
+                <li>Qt Group. (2025). <em>PySide6 Reference Documentation</em>. <a href="https://doc.qt.io/qtforpython-6/" target="_blank">doc.qt.io</a> </li>
+                <li>Rus, D., & Tolley, M. T. (2015). <em>Design, fabrication and control of soft robots</em>. Nature .</li>
             </ul>
         </section>
 

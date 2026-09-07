@@ -250,7 +250,7 @@ body {
 
 .media-card img {
     width: 100%;
-    height: 190px;
+    height: 250px;
     object-fit: cover;
     display: block;
     border-bottom: 2px solid #ffe3ec;
@@ -273,12 +273,13 @@ pre {
     border-radius: var(--radius-md);
     overflow-x: auto;
     box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    height: 400px;
 }
 
 code {
     font-family: 'Fira Code', monospace;
     color: #a8edda;
-    font-size: 0.88rem;
+    font-size: 0.68rem;
 }
 
 /* TABLAS PASTEL 🍰 */
@@ -341,6 +342,7 @@ a:hover {
 /* ADAPTATIVO / MÓVIL */
 @media (max-width: 900px) {
     body { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 2px solid var(--border); }
+    .sidebar { display:none ;width: 100%; height: auto; position: relative; border-right: none; border-bottom: 2px solid var(--border); }
     .content { margin-left: 0; width: 100%; padding: 1.8rem 1.2rem; }
+    .hero::after {font-size: 1.5rem;}
 }
