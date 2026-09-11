@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"  />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>hash</title>
+
+<!-- Incluye Prism.js y el tema que desees -->
+<link href="prism.css" rel="stylesheet" />
+<script src="prism.js"></script>
+
+
+<script>
+  Prism.highlightAll();
+</script>
+
+
+<p>El número indica la versión es decir que hay 80 versiones en total hasta la fecha, Las letras A, B, C solo son para los Demos&nbsp;  indican las revisiones que hice, siendo A que hice una sola revisión y C que hice 3 revisiones.&nbsp;<br></p>
+<p><span style="color: inherit; font-family: inherit; font-size: inherit;">entonces comenzamos por el principio en la versión 001 &nbsp;</span><br></p>
+<p><strong>Primera semana - diseño&nbsp;</strong></p>
+<p>comenze el desarrollo de este juego desde casi un día después que anunciaron el tema de la GB compo 23 es decir junio 15&nbsp;</p>
+<p>los 2 días siguientes me propuse que es lo que iba hacer, aquí hay una imagen de lo que era mi idea inicial&nbsp;</p>
+<p><br></p>
+<p><img src="H0Y5O2.jpg"><br></p>
+<p>después continúe con el desarrollo de los personajes&nbsp;</p>
+<p><img src="zqMaMi.gif"></p>
+<p><strong>Segunda semana - empezando la programación&nbsp;</strong></p>
+<p>lo primero que hice fue básicamente dibujar a keychan xd</p>
+<a href="keychans/012/12.html">012</a>
+<p><img src="ZiUHIg.png"></p>
+<p>y fui definiendo primero la función que haría que mi sprite rotace</p>
+<p>también dibuje a las ratóncitas&nbsp;</p>
+<p><img src="CKJeT9.png"></p>
+<p>hasta aquí es la versión 014</p>
+<a href="keychans/017/17.html">017</a>
+<p><strong>Tercera semana - programando los movimientos&nbsp;</strong><br></p>
+<p>empezaron los problemas, necesitaba que todo se viera fluido ya que al tener más personajes en pantalla no me iba a servir hacer animación con delay, así que cambie la animación para usar sys_time, surgieron desincronizaciones y otros problemas. Luego agregué una mapa de prueba algo reciclado y también surgió el problema de los coliders&nbsp;</p>
+<p><img src="T1yHoF.png"></p>
+<p>esta es la versión 043&nbsp;</p>
+<a href="keychans/043/43.html">043</a>
+<p><strong>Cuarta semana - el problema feo de los colliders y alistando una primera demo</strong><br></p>
+<p>estaba casi toda esta semana también la anterior intentando arreglar los colliders desde varios enfoques y ninguno me resultó, así que me di una pausa de eso y empecé a hacer la parte de la historia es decir a armar la sinematica inicial y tratar de hacer una demo para presentarla en mejora tu juego jam, aunque el juego seguía estando roto, hasta que de último momento se me ocurrió la idea de simplemente limitar el movimiento haciendo básicamente que no te puedas mover si no hay piso y se soluciono temporalmente pues me gustaba que todo fuera más fluido&nbsp;</p>
+<p><img src="gmjMPZ.png"></p>
+<p>versión 52</p>
+<a href="keychans/052/52.html">052</a>
+<p><img src="rEesUf.jpg"></p>
+<p><strong>Quinta semana&nbsp;</strong><br></p>
+<p>continuando con el desarrollo, empece a implementar el generador de niveles más grandes además de una forma de hacer scroll en estos</p>
+<p><img src="84F.png"></p>
+<p>versión 055</p>
+<a href="keychans/055/55.html">055</a>
+<p>Luego fui corrigiendo el mismo, además de hacer que los npc spawmeen en zonas específicas para evitar que se encuentren atrapados cuando cambia el mapa<br></p>
+<p><img src="nK9yqK.png"></p>
+<p>versión 061</p>
+<a href="keychans/061/61.html">061</a>
+<p>También hice un experimento de música dinámica jugando con los registros de sonido y quedo bastante bien, para la escena inicial también es que usando los registros de sonido encontré que el canal de ruido tiene un divisor periódico o algo así que da ritmos interesantes así que con solo use una convinacion de un par de estos tiende a sonar bien en BGB y en my OldBoy pero en el emulador web suena algo raro no se como lo hará en un Gameboy de verdad&nbsp;</p>
+<p>en la parte de los colliders lo que hice fue hacer parches susecivos lo primero fue verificar situaciones especificas en diagonal y el input y desactivar temporalmente la gravedad, tiende a ser más flexible pero aveces con inputs rápidos tiende a fallar así que hice que si en la posición en la que esta el jugador es sólida simplemente hacer que se eleve lo cual hace a veces que se salga del mapa así que hice que hiciera respawn justo al medio, si no se me ocurrió otra cosa por el momento&nbsp;</p>
+<p>Hice también que la escena inicial se pueda saltar&nbsp;</p>
+<p><img src="FIe1HL.jpg"></p>
+<p>Version 067</p>
+<a href="keychans/067/67.html">067</a>
+<p><strong>Sexta semana&nbsp;</strong></p>
+<p>hice que el generador pueda generar los 9 rooms de un nivel y lo guarde en la batería&nbsp;</p>
+<p>ahora quise mejorar la pantalla de título y pues por fin supe como hacer funcionar el gbt player así que con milky tracker y un poco de ayuda de chatgpt no hice solo una sino tres canciones y pues como quiero que mi juego sea full procedurally y que te de una sensación diferente cada vez que lo jueguen pues agregue las tres (talvez haga más)&nbsp;</p>
+<p>también le pase a chatgpt la música dinámica que hice (usando un switch case y los registros de sonido) y le dije que hiciera una composición nueva y pues hizo básicamente un dubstep así que lo puse cuando el HP sea bajo para dar más adrenaline, talvez le haga algún retoque porque tiene notas bastante agudas</p>
+<p>con lo cual implemente el HP<strong></strong> también la barra de vida &nbsp;</p>
+<p>agregue el efecto de fade in y fade out para la sinematica.&nbsp;</p>
+<p><img src="ibuTXl.jpg"></p>
+<p><strong>Séptima semana</strong></p>
+<p>Aquí me tomé un descanso... zzzzz</p>
+<p><br></p>
+<p><em><strong>Octavia semana</strong></em><br></p>
+<p>Version 080</p>
+<a href="keychans/080/80.html">080</a>
+<p>programe un algorimo para poder generar las puertas y sus conexiones y un sudoku&nbsp;</p>
+<p><br></p>
+<p><img src="PoAWw3.jpg"><br><strong>Novena semana</strong><br></p>
+<p></p>
+<p>Aquí por culpa de la nueva actualización de gbdk2020 4.2 que utiliza el sdcc tuve que reescribir gran parte de las declaraciones de las funciones y algunas operaciones cambiando % y / por operaciones de bits &gt;&gt;y &lt;&lt;&lt;</p>
+<p>También agregue las voces&nbsp;</p>
+<p><img src="38VL0Z.jpg"><br></p>
+<p><strong>Décima semana</strong><br></p>
+<p>Version 089</p>
+<a href="keychans/089/89.html">089</a>
+<p></p>
+<p>Hice un revisión final y de último momento agregué las cajas cerradas, además de la parte del HID y en la parte de carga agregue un pequeño tutorial</p>
+<p><img src="PLflBa.jpg"><br></p>
+<a href="keychans/100/100.html">089R2 Deadline</a>

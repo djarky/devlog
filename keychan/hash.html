@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"  />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>hash</title>
+
+<!-- Incluye Prism.js y el tema que desees -->
+<link href="prism.css" rel="stylesheet" />
+<script src="prism.js"></script>
+
+
+<script>
+  Prism.highlightAll();
+</script>
+
+
+
+<h1>cuando algo funciona bien casi ni se nota </h1>
+<p>me refiero a la función draw_map() es #magia , no lo notaste el "#" hash&nbsp;</p>
+<p><img src="7xGHZr.jpg"><br></p>
+<p>si, la operación hash que implente para calcular el tile correspondiente en base a sólo una matriz binaria lo utilize en&nbsp;&nbsp;<a href="games/bone/bone.html">bonefinder</a>&nbsp;y como es super genial también lo estoy usando en este</p>
+<p><img src="uZRpyr.jpg"><br></p>
+<p>pero de que se trata?&nbsp;</p>
+<p>en si es una operación que toma los tiles adyacentes y les asigna un valor que sea potencia de 2 y luego los suma de la siguiente forma</p>
+<p>[.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;][2^1][.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;]</p>
+<p>[2^2][.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;][2^3]</p>
+<p>[.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;][2^4][.&nbsp; &nbsp; &nbsp; &nbsp; ]</p>
+<p>o como gustes</p>
+<p>el resultado te dará con exactitud cuáles tiles son sólidos o no.&nbsp;</p>
+<p><br></p>
+<p>como en gbdk el joypad() se mapea de manera similar usando las definiciones J_UP J_DOWN J_LEFT y J_RIGHT decidí utilizar estas mismas ya que en el fondo son solo definiciones #define es decir que el compilador cuando ve alguno de estos lo cambia por sus respectivos valores 0x01 0x02... etc (ver <a href="gbh.html">include/gb.h</a>)&nbsp;</p>
+<p><br></p>
+<p><br></p>
+<pre>
+<code class="language-c"> 
+void calcule_hash(UBYTE U,UBYTE mapa[]){
+hash=0x00;
+ if(mapa[U]==0x01){
+  if(mapa[U-1]==0x00||mapa[U-1]==0x02){ hash+=J_LEFT;}
+  if(mapa[U+1]==0x00||mapa[U+1]==0x02){ hash+=J_RIGHT;}
+  if(mapa[U+10]==0x00||mapa[U+10]==0x02){hash+=J_DOWN;}
+  if(mapa[U-10]==0x00||mapa[U-10]==0x02){hash+=J_UP;}
+}
+  //fix for indexoff 
+  if(U&lt;10)  {hash=hash&~J_UP;}
+  if(U&gt;0x50 && U&lt;0x5A){hash=hash&~J_DOWN;}
+  if(U%10==0){ hash=hash&~J_LEFT;}
+  if(U%10==9){ hash=hash&~J_RIGHT;}
+  
+ if(mapa[U]==0x00){hash=0xFF;}
+ if(mapa[U]==0x02){hash=J_A;}
+}
+//y luego 
+</code>
+</pre>
+<pre>
+<code class="language-c">
+void draw_hash(UBYTE X,UBYTE Y,UBYTE U,UBYTE mapa[]){
+calcule_hash(U,mapa);
+switch(hash){
+ case J_LEFT+J_UP:   set_bkg_tiles(X*2,Y*2,2,2,Tile_A);break;
+ case J_UP+J_RIGHT:  set_bkg_tiles(X*2,Y*2,2,2,Tile_B);break;
+ case J_RIGHT+J_DOWN:set_bkg_tiles(X*2,Y*2,2,2,Tile_C);break;
+ case J_DOWN+J_LEFT: set_bkg_tiles(X*2,Y*2,2,2,Tile_D);break;
+ case J_UP:          set_bkg_tiles(X*2,Y*2,2,2,Tile_E);break;
+ case J_DOWN:        set_bkg_tiles(X*2,Y*2,2,2,Tile_F);break;
+ case J_LEFT:        set_bkg_tiles(X*2,Y*2,2,2,Tile_G);break;
+ case J_RIGHT:       set_bkg_tiles(X*2,Y*2,2,2,Tile_H);break;
+ case J_RIGHT+J_LEFT+J_UP:  set_bkg_tiles(X*2,Y*2,2,2,Tile_I);break;
+ case J_RIGHT+J_LEFT+J_DOWN:set_bkg_tiles(X*2,Y*2,2,2,Tile_J);break;
+ case J_UP+J_DOWN+J_LEFT:   set_bkg_tiles(X*2,Y*2,2,2,Tile_K);break;
+ case J_UP+J_DOWN+J_RIGHT:  set_bkg_tiles(X*2,Y*2,2,2,Tile_L);break;
+ case J_UP+J_DOWN:   set_bkg_tiles(X*2,Y*2,2,2,Tile_M);break;
+ case J_LEFT+J_RIGHT:   set_bkg_tiles(X*2,Y*2,2,2,Tile_N);break;
+ case J_DOWN+J_UP+J_LEFT+J_RIGHT:set_bkg_tiles(X*2,Y*2,2,2,Tile_O);break;
+ case 0x00:set_bkg_tiles(X*2,Y*2,2,2,Tile_P);break;
+ case 0xFF:set_bkg_tiles(X*2,Y*2,2,2,PSY_MOS);break;
+ case J_A:set_bkg_tiles(X*2,Y*2,2,2,Tile_Hueso);break;
+ }
+}
+void draw_map(UBYTE mapa[]){
+LOAD_PSY_BKG(rand()%0x0A);
+for(i=0;i&lt;90;i++){
+ draw_hash(i%10,i/10,i,mapa);
+}
+}
+//fin
+</code>
+</pre>
+<p>22</p>
+<p><img src="Clh9Fr.jpg"></p>
